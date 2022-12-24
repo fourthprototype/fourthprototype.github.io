@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Design 11 - Menu</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
+
+
+	<style type="text/css">
+
+		@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+  		@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
+
+  		* {
+  			box-sizing: border-box;
+  			-webkit-box-sizing: border-box;
+  			-moz-box-sizing: border-box;
+  			-ms-box-sizing: border-box;
+  		}
+
+  		:root {
+		    --accent-color: #d3ecdd;
+		    --main-color: #1d1d1d;
+		    --second-color: #94d1ac;
+		}
+
+		/* List of Menu */
+        .header-h {
+		    font-size: 35px;
+		    color: var(--accent-color);
+		    font-size: 46px;
+		    font-family: 'Oswald', sans-serif;
+		    font-weight: 300;
+		    text-decoration: underline;
+		    }
+		ul {
+		  list-style:none;
+		}
+		.header-p {
+		  color: var(--accent-color);
+		  font-size: 16px;
+		}
+		.section-padding{
+		    padding: 60px 0px;
+		}
+		.marb-35{
+		  margin-bottom: 35px;
+		}
+		.menu-restaurant
+		{
+		  width: 50%;
+		  float: left;
+		  padding: 15px;
+		  position: realtive;
+		  
+		}
+		.menu-restaurant .menu-title
+		{
+		  float: left;
+		  font-family: 'Dancing Script', cursive;
+/*		  text-transform: uppercase;*/
+		  letter-spacing: 2px;
+		  color: var(--second-color);
+		  font-size: 18px;
+		}
+		.menu-restaurant .menu-line
+		{
+		  position: absolute;
+		  bottom: 6px;
+		  border-bottom: 1px dotted rgba(0,0,0,.3);
+		/*  border-bottom: 1px dotted rgba(0,0,0,.3);*/
+		  margin-left: .6em;
+		  margin-right: .6em;
+
+		}
+		.menu-restaurant .menu-price{
+		  font-family: 'Oswald', sans-serif;
+		  font-weight: 600;
+		  position: absolute;
+		  right: 0;
+		  top: 0;
+		  
+		}
+		.menu-restaurant .menu-subtitle
+		{
+		  display: block;
+		  float: left;
+		  color: #000;
+		  font-family: 'Roboto', sans-serif !important;
+		  font-size: 15px;
+		}
+		.menu-restaurant span.clearfix{
+		  position: relative;
+		  display: block;
+		}
+		.filter {
+		  	font-family: 'Oswald', sans-serif;
+		    margin: 15px 15px;
+		}
+		#menu-filters ul li a.active, #menu-filters ul li a:hover
+		{
+		  text-decoration: underline;
+		  text-decoration-color: var(--accent-color);
+		  color: var(--second-color);
+		}
+		#menu-filters ul li 
+		{
+		  display: inline-block;
+		  color: #fff;
+		  text-transform: capitalize;
+		  letter-spacing: 1px;
+		  margin-botttom:40px;
+		}
+		#menu-filters ul li a
+		{
+		  padding: 10px 20px;
+		  font-size: 18px;
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		  
+		}
+		@media (min-width: 20px) and (max-width: 450px) 
+		{
+		  .menu-restaurant 
+		  {
+		    width: 100%;
+		  }
+		  .header-h
+		  {
+		    font-size: 35px;
+		  }
+		  .header-p 
+		  {
+		    font-size: 14px;
+		  }
+		  
+		}
+
+		@media only screen and (max-width: 473px) {
+			a.menu-margins {
+				margin-top: 155px !important;
+			}
+		}
+
+		/* Menu Button */
+		.show-all-menus {
+			letter-spacing: 1px;
+			color: var(--second-color);
+			font-size: 24px;
+			padding: 10px 15px;
+			border: 3px solid var(--second-color);
+			text-decoration: none;
+			text-transform: uppercase;
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+		}
+
+		.show-all-menus:hover {
+			color: var(--accent-color);
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		@media only screen and (max-width: 410px) {
+			.menu-margins {
+				margin-top: 30px !important;
+/*				margin-left: -10px;*/
+			}
+		}
+
+		footer {
+			font-family: 'Oswald', sans-serif;
+		}
+
+		footer h3 {
+			font-size: 18px;
+			letter-spacing: 2px;
+			margin-bottom: 15px !important;
+			font-weight: lighter;
+		}
+
+		footer h3 a {
+			color: black;
+			text-decoration: none;
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+		}
+
+		footer h3 a:hover {
+			color: var(--accent-color);
+			cursor: pointer;
+			text-decoration: underline;
+			text-decoration-color: var(--accent-color);
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+
+<section id="menu-list" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center  marb-35">
+          <h1 class="header-h">Our Menu</h1>
+        </div>
+
+        <div class="col-md-12 text-center" id="menu-filters">
+          <ul>
+            <li><a class="filter active" data-filter=".menu-restaurant">All</a></li>
+             <li><a class="filter " data-filter=".breakfast">Breakfast</a></li>
+             <li class="menu-margins"><a class="filter" data-filter=".lunch">Lunch</a></li>
+          </ul>
+        </div>
+        <div id="menu-wrapper">
+          <div class="breakfast menu-restaurant">
+            <span class="clearfix">
+              <a class="fancylight menu-title popup-btn" href="https://img.freepik.com/free-photo/hawaiian-pizza_74190-2500.jpg?w=2000" data-meal-img=".jpg">Pizza</a>
+              <span style="left:166px;right:44px;" class="menu-line"></span>
+              <span class="menu-price">$20.99</span>
+            </span>
+            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+          </div>
+           <div class="breakfast menu-restaurant">
+                <span class="clearfix">
+                  <a class="fancylight menu-title popup-btn" href="https://img.freepik.com/free-photo/hawaiian-pizza_74190-2500.jpg?w=2000" data-fancybox-group="light" data-meal-img="https://img.freepik.com/free-photo/hawaiian-pizza_74190-2500.jpg?w=2000">Burger</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="breakfast menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="breakfast menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+              <div class="lunch menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="lunch menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="lunch menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="lunch menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="lunch menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+           <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+
+              <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+              <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>
+              <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>    <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>    <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>    <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>    <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>    <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>    <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>    <div class="dinner menu-restaurant">
+                <span class="clearfix">
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                  <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                  <span class="menu-price">$20.99</span>
+                </span>
+                <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              </div>              
+          </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+	<center>
+		<h3>&copy; 2022 by <a href="#">Someone Famous</a></h3>
+	</center>
+</footer>
+
+<script>
+    (function($) {
+
+      // Menu filter
+      $("#menu-filters li a").click(function() {
+        $("#menu-filters li a").removeClass('active');
+        $(this).addClass('active');
+
+        var selectedFilter = $(this).data("filter");
+        //  $("#menu-wrapper").fadeTo(100, 0);
+
+        $(".menu-restaurant").fadeOut();
+
+        setTimeout(function() {
+          $(selectedFilter).slideDown();
+          //$("#menu-wrapper").fadeTo(300, 1);
+        }, 300);
+      });
+
+    })(jQuery);
+</script>
+
+<script type="text/javascript">
+	$('.portfolio-menu ul li').click(function(){
+	 	$('.portfolio-menu ul li').removeClass('active');
+	 	$(this).addClass('active');
+	 	
+	 	var selector = $(this).attr('data-filter');
+	 	$('.portfolio-item').isotope({
+	 		filter:selector
+	 	});
+	 	return  false;
+		 });
+		 $(document).ready(function() {
+		 var popup_btn = $('.popup-btn');
+		 popup_btn.magnificPopup({
+		 type : 'image',
+		 gallery : {
+		 	enabled : true
+		 }
+		 });
+ 	});
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+
+</body>
+</html>

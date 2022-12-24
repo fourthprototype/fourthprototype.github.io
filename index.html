@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Design 11</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  	<style type="text/css">
+
+  		@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+  		@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
+
+
+  		* {
+  			box-sizing: border-box;
+  			-webkit-box-sizing: border-box;
+  			-moz-box-sizing: border-box;
+  			-ms-box-sizing: border-box;
+  			/*padding: 0;
+  			margin: 0;*/
+  			font-family: 'Oswald', sans-serif;
+  		}
+
+		:root {
+		    --accent-color: #d3ecdd;
+		    --main-color: #1d1d1d;
+		    --second-color: #94d1ac;
+		}
+
+		/* Navbar */
+		nav {
+			width: 100%;
+			position: fixed !important;
+			z-index: 10;
+			top: 0 !important;
+			background: white !important;
+		}
+
+		.wrapper {
+			 transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+		}
+		 .navbar {
+			 height: 75px;
+			 transition: all 0.5s 0.1s;
+		}
+		 .navbar-offcanvas {
+			 z-index: 1030;
+		}
+		 .navbar-offcanvas .container-fluid {
+			 position: relative;
+			 padding: 0;
+			 transform: translate3d(0px, 0, 0);
+			 transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+		}
+		 .navbar-offcanvas .navbar-top {
+			 display: none;
+		}
+		.nav-link {
+			font-size: 24px;
+			text-transform: uppercase;
+		}
+		.nav-link:hover {
+			color: var(--accent-color);
+		}
+		 @media (min-width: 992px) {
+			 .navbar-offcanvas .navbar-top {
+				 display: flex;
+				 margin-left: auto;
+			}
+		}
+		 .navbar-offcanvas .navbar-top .nav-item {
+			 margin-right: 22px;
+			 text-align: center;
+		}
+		 .navbar-offcanvas .navbar-top .nav-item a:hover {
+				 color: var(--accent-color) !important;
+		}
+		 @media (max-width: 991px) {
+			 .navbar-offcanvas .navbar-top .nav-item .nav-link {
+				 color: #000;
+			}
+		}
+		 .navbar-offcanvas .navbar-toggler {
+			 padding: 0;
+			 border: 0;
+			 outline: none;
+		}
+		 .navbar-offcanvas .navbar-toggler:hover, .navbar-offcanvas .navbar-toggler:focus {
+			 cursor: pointer;
+		}
+		 @media (min-width: 768px) {
+			 .navbar-offcanvas .navbar-toggler {
+				 display: block;
+			}
+		}
+		 .navbar-offcanvas .navbar-toggler .icon-bar {
+			 display: block;
+			 position: relative;
+			 width: 30px;
+			 height: 3px;
+			 border-radius: 1px;
+			 background-color: #000;
+		}
+		 .navbar-offcanvas .navbar-toggler .icon-bar + .icon-bar {
+			 margin-top: 4px;
+		}
+		 .navbar-offcanvas .navbar-toggler .icon-bar.bar1 {
+			 top: 0;
+			 outline: 1px solid transparent;
+			 animation: topbar-back 500ms 0s;
+			 animation-fill-mode: forwards;
+		}
+		 .navbar-offcanvas .navbar-toggler .icon-bar.bar2 {
+			 outline: 1px solid transparent;
+			 opacity: 1;
+		}
+		 .navbar-offcanvas .navbar-toggler .icon-bar.bar3 {
+			 bottom: 0;
+			 outline: 1px solid transparent;
+			 animation: bottombar-back 500ms 0s;
+			 animation-fill-mode: forwards;
+		}
+		 .navbar-offcanvas .navbar-toggler.toggled .icon-bar.bar1 {
+			 top: 6px;
+			 animation: topbar-x 500ms 0s;
+			 animation-fill-mode: forwards;
+		}
+		 .navbar-offcanvas .navbar-toggler.toggled .icon-bar.bar2 {
+			 opacity: 0;
+		}
+		 .navbar-offcanvas .navbar-toggler.toggled .icon-bar.bar3 {
+			 bottom: 6px;
+			 animation: bottombar-x 500ms 0s;
+			 animation-fill-mode: forwards;
+		}
+		 .navbar-offcanvas .navbar-collapse.collapse, .navbar-offcanvas .navbar-collapse.collapse.in, .navbar-offcanvas .navbar-collapse.collapsing {
+			 display: none !important;
+		}
+		 .nav-open .navbar-collapse {
+			 transform: translate3d(0px, 0, 0);
+		}
+		 .nav-open .navbar > .container-fluid {
+			 transform: translate3d(-424px, 0, 0);
+		}
+		 @media (max-width: 991px) {
+			 .nav-open .navbar > .container-fluid {
+				 transform: translate3d(-282.6666666667px, 0, 0);
+			}
+		}
+		 .nav-open .wrapper {
+			 transform: translate3d(-150px, 0, 0);
+		}
+		 body > .navbar-collapse {
+			 display: block !important;
+			 position: fixed;
+			 top: 0;
+			 right: -10px;
+			 width: 424px;
+			 height: 100%;
+			 padding: 60px 1rem;
+			 background-color: #fff;
+			 border-left: 1px solid #e3e3e3;
+			 text-align: center;
+			 visibility: visible;
+			 overflow-y: visible;
+			 transform: translate3d(424px, 0, 0);
+			 transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+			 z-index: 1032;
+		}
+		 body > .navbar-collapse:after {
+			 content: "";
+			 position: absolute;
+			 top: 28px;
+			 left: -20px;
+			 border-left: 10px solid #fff;
+			 border-top: 10px solid transparent;
+			 border-bottom: 10px solid transparent;
+			 border-right: 10px solid transparent;
+			 transform: rotate(180deg);
+			 transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+			 z-index: 1032;
+		}
+		 @media (max-width: 991px) {
+			 body > .navbar-collapse {
+				 width: 282.6666666667px;
+			}
+		}
+		 body > .navbar-collapse .nav-image {
+			 margin-bottom: 65px;
+		}
+		 body > .navbar-collapse .nav-image img {
+			 display: block;
+			 margin: 0 auto;
+			 border: 1px solid rgba(0, 0, 0, .14);
+			 width: 100%;
+			 height: auto;
+		}
+		 body > .navbar-collapse .navbar-top {
+			 margin: 0 !important;
+			 flex-direction: column;
+		}
+		 @media (min-width: 992px) {
+			 body > .navbar-collapse .navbar-top {
+				 display: none;
+			}
+		}
+		 body > .navbar-collapse .navbar-top li {
+			 text-align: center;
+		}
+		 body > .navbar-collapse .navbar-top li a {
+			 display: block;
+			 padding: 0.5rem 1rem;
+			 font-weight: 700;
+			 color: #000;
+		}
+		 body > .navbar-collapse .navbar-top li a:hover, body > .navbar-collapse .navbar-top li a:focus {
+			 text-decoration: none;
+		}
+		 body > .navbar-collapse .nav-link, body > .navbar-collapse .dropdown-toggle {
+			 font-weight: 700;
+			 color: #222;
+			 transition: color 0.2s ease-out;
+		}
+		 body > .navbar-collapse .nav-link:hover, body > .navbar-collapse .dropdown-toggle:hover, body > .navbar-collapse .nav-link:focus, body > .navbar-collapse .dropdown-toggle:focus {
+			 text-decoration: none;
+		}
+		 body > .navbar-collapse .nav-link.disabled, body > .navbar-collapse .dropdown-toggle.disabled {
+			 color: rgba(0, 0, 0, .35);
+		}
+		 body > .navbar-collapse .nav-link.disabled:hover, body > .navbar-collapse .dropdown-toggle.disabled:hover, body > .navbar-collapse .nav-link.disabled:focus, body > .navbar-collapse .dropdown-toggle.disabled:focus {
+			 cursor: not-allowed;
+		}
+		 @media (min-width: 992px) {
+			 body > .navbar-top {
+				 display: none;
+			}
+		}
+		 body > #overlay {
+			 content: "";
+			 position: fixed;
+			 top: 0;
+			 left: auto;
+			 right: calc(282.6666666667px - 10px);
+			 width: 100%;
+			 height: 100%;
+			 opacity: 0;
+			 overflow-x: hidden;
+			 z-index: 1029;
+		}
+		 @media (min-width: 992px) {
+			 body > #overlay {
+				 right: calc(424px - 10px);
+			}
+		}
+		 @keyframes topbar-x {
+			 0% {
+				 top: 0px;
+				 transform: rotate(0deg);
+			}
+			 45% {
+				 top: 6px;
+				 transform: rotate(145deg);
+			}
+			 75% {
+				 transform: rotate(130deg);
+			}
+			 100% {
+				 transform: rotate(135deg);
+			}
+		}
+		 @keyframes topbar-back {
+			 0% {
+				 top: 6px;
+				 transform: rotate(135deg);
+			}
+			 45% {
+				 transform: rotate(-10deg);
+			}
+			 75% {
+				 transform: rotate(5deg);
+			}
+			 100% {
+				 top: 0px;
+				 transform: rotate(0);
+			}
+		}
+		 @keyframes bottombar-x {
+			 0% {
+				 bottom: 0px;
+				 transform: rotate(0deg);
+			}
+			 45% {
+				 bottom: 6px;
+				 transform: rotate(-145deg);
+			}
+			 75% {
+				 transform: rotate(-130deg);
+			}
+			 100% {
+				 transform: rotate(-135deg);
+			}
+		}
+		 @keyframes bottombar-back {
+			 0% {
+				 bottom: 6px;
+				 transform: rotate(-135deg);
+			}
+			 45% {
+				 transform: rotate(10deg);
+			}
+			 75% {
+				 transform: rotate(-5deg);
+			}
+			 100% {
+				 bottom: 0px;
+				 transform: rotate(0);
+			}
+		}
+ 
+
+	  /*body {
+	    background: linear-gradient(253deg, #0cc898, #1797d2, #864fe1);
+	    background-size: 300% 300%;
+	    -webkit-animation: Background 25s ease infinite;
+	    -moz-animation: Background 25s ease infinite;
+	    animation: Background 25s ease infinite;
+	  }
+	  
+	  @-webkit-keyframes Background {
+	    0% {
+	      background-position: 0% 50%
+	    }
+	    50% {
+	      background-position: 100% 50%
+	    }
+	    100% {
+	      background-position: 0% 50%
+	    }
+	  }
+	  
+	  @-moz-keyframes Background {
+	    0% {
+	      background-position: 0% 50%
+	    }
+	    50% {
+	      background-position: 100% 50%
+	    }
+	    100% {
+	      background-position: 0% 50%
+	    }
+	  }
+	  
+	  @keyframes Background {
+	    0% {
+	      background-position: 0% 50%
+	    }
+	    50% {
+	      background-position: 100% 50%
+	    }
+	    100% {
+	      background-position: 0% 50%
+	    }
+	  }*/
+	  
+	  .full-screen {
+	    position: relative;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    background: url(https://images.pexels.com/photos/791810/pexels-photo-791810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+	/*    background-size: cover;*/
+		background-repeat: no-repeat;
+	    background-position: center;
+	    width: 100%;
+	    height: 800px;
+	    display: -webkit-flex;
+	    display: flex;
+	    -webkit-flex-direction: column;
+	    object-fit: contain;
+	    /* works with row or column */
+	    
+	    flex-direction: column;
+	    -webkit-align-items: center;
+	    align-items: center;
+	    -webkit-justify-content: center;
+	    justify-content: center;
+	    text-align: center;
+	  }
+	  
+	  h3 {
+	    color: #fff;
+	    font-family: 'Open Sans', sans-serif;
+	    font-weight: 800;
+	    font-size: 4em;
+	    letter-spacing: -2px;
+	    text-align: center;
+	    text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
+	  }
+	  
+	  h3:after {
+	    display: block;
+	    color: #fff;
+	    letter-spacing: 1px;
+	    font-family: 'Poiret One', sans-serif;
+	    content: 'Subtitle goes here';
+	    font-size: .4em;
+	    text-align: center;
+	  }
+	  
+	  /*.button-line {
+	    font-family: 'Open Sans', sans-serif;
+	    text-transform: uppercase;
+	    letter-spacing: 2px;
+	    background: transparent;
+	    border: 1px solid #fff;
+	    color: #fff;
+	    text-align: center;
+	    font-size: 1.4em;
+	    opacity: .8;
+	    padding: 20px 40px;
+	    text-decoration: none;
+	    transition: all .5s ease;
+	    margin: 0 auto;
+	    display: block;
+	    width: 200px;
+	  }*/
+
+	  .button-line a {
+	  	font-size: 24px;
+	  	text-transform: uppercase;
+	  	padding: 10px 25px;
+	  	border: 3px solid white;
+	  	color: white;
+	  	text-decoration: none;
+	  	transition: all 0.3s;
+	  	-webkit-transition: all 0.3s;
+	  	-moz-transition: all 0.3s;
+	  	-ms-transition: all 0.3s;
+	  }
+
+	  .button-line a:hover {
+	  	color: var(--accent-color);
+	  	border-color: var(--accent-color);
+	  }
+	  
+	  .button-line:hover {
+	    opacity: 1;
+	  }
+
+
+	  	/* Featurettes
+		------------------------- */
+
+		.featurette-divider {
+		  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+		}
+
+		/* Thin out the marketing headings */
+		/* rtl:begin:remove */
+		.featurette-heading {
+		  letter-spacing: -.05rem;
+		}
+
+		.lead {
+			font-family: 'Roboto', sans-serif;
+			letter-spacing: 1px;
+		}
+
+		/* rtl:end:remove */
+
+		/* RESPONSIVE CSS
+		-------------------------------------------------- */
+
+		@media (min-width: 40em) {
+
+		  .featurette-heading {
+		    font-size: 50px;
+		  }
+		}
+
+		@media (min-width: 62em) {
+		  .featurette-heading {
+		    margin-top: 7rem;
+		  }
+		}
+
+		/* Gallery */
+		.portfolio-menu {
+			text-align: center;
+			align-items: center;
+			align-content: center;
+		}
+		.portfolio-menu .active {
+/*			background: var(--accent-color);*/
+			color: var(--second-color);
+			text-decoration: underline;
+			text-decoration-color: var(--second-color);
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+		}
+		.portfolio-menu ul li {
+			display:inline-block;
+			margin:0;
+			list-style:none;
+			padding:10px 15px;
+			cursor:pointer;
+			-webkit-transition:all 05s ease;
+			-moz-transition:all 05s ease;
+			-ms-transition:all 05s ease;
+			-o-transition:all 05s ease;
+			transition:all .5s ease;
+		}
+
+		.portfolio-item {
+			/*width:100%;*/
+		}
+		.portfolio-item .item {
+			/*width:303px;*/
+			float:left;
+			margin-bottom:10px;
+		}
+
+		.gallery-selection-buttons {
+			font-size: 18px;
+			font-family: 'Roboto', sans-serif;
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+		}
+
+		.gallery-selection-buttons:hover {
+			color: var(--accent-color);
+			text-decoration: underline;
+			text-decoration-color: var(--accent-color);
+		}
+
+		/* Texts Color */
+		.main-colors {
+			color: var(--accent-color);
+		}
+
+		.main-colors-touch {
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+		}
+
+		.main-colors-touch:hover {
+			color: var(--accent-color) !important;
+		}
+
+		/* Bootstrap Button */
+		.btn-outline-dark:hover {
+			background: var(--accent-color);
+			color: black;
+		}
+
+		/* Testimonials */
+		.sr-only{position: absolute !important;height: 1px; width: 1px;border: 0; padding: 0;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);pointer-events:none;}
+
+		.tfeature_btn{margin-top:110px;background:transparent;border:2px solid #000;width:40px;height:40px;line-height:36px;border-radius:50%;color:#000;text-align:center;font-size:17px;z-index: 7;}
+		 
+		#tfeature-images{position:relative;height:250px;}
+		.tfeature-images_item{width:250px;height:250px;border-radius:50%;background-color:#fff;display:none;overflow:hidden;position:absolute;top:0;z-index:1;left:50%;margin-left:-125px;border: 4px solid white;background-position: center;background-repeat: no-repeat;background-size: cover; object-fit: cover;}
+		.tfeature-images_item.left{margin-left:-325px;} 
+		.tfeature-images_item.right{margin-left:50px;}
+		.tfeature-images_item.center{z-index:9;}
+		.tfeature-images_item.left,.tfeature-images_item.right,.tfeature-images_item.center{display:block;}
+		.tfeature-images_item.left img,.tfeature-images_item.right img{opacity:.4;}
+		#tfeature-testimonial{text-align:center;}
+		#tfeature-testimonial_content{font-size:1.5rem;padding:1rem 0;font-family: 'Roboto', sans-serif;}
+		#tfeature-testimonial_author{font-style:italic; font-size: 18px;}
+
+		/*utils*/
+/*		.container {width: 980px; max-width:100%; margin:0 auto;}*/
+		img{max-width:100%;}
+		.columns{
+		    display: -ms-flexbox;
+		    -ms-flex-wrap: wrap;
+		    -ms-flex-direction: row;
+		    padding: 2rem 0;
+		    display:flex;
+		    flex-wrap: nowrap;
+		    flex-direction: row;
+		    justify-content: space-between;
+		} 
+		.col-1,.col-9{flex: 0 0 auto;padding:10px}
+		.col-1:last-of-type{text-align:right;}
+		.col-1 {flex-basis: 8.333%;max-width: 8.333%;}
+		.col-9 {flex-basis: 75%;max-width: 75%;}
+
+		@media (max-width: 800px){
+		  .tfeature-images_item.left,
+		  .tfeature-images_item.right{
+		    display:none;
+		  }
+		.col-1 {flex-basis: 12%;max-width: 12%;}
+		.col-9 {flex-basis: 55%;max-width: 55%;}
+		.col-1,.col-9{padding:10px 0;}
+		}
+
+		@media only screen and (max-width: 414px) {
+			#tfeature-testimonial_content {
+				font-size: 21px;
+			}
+
+			#tfeature-testimonial_author {
+				font-size: 21px !important;
+			}
+		}
+
+		@media only screen and (max-width: 320px) {
+			.tfeature-images_item {
+				height: 200px;
+				width: 200px;
+				align-items: center;
+				align-content: center;
+				text-align: center;
+				/*margin-right: 0px;
+				margin-left: 0;*/
+				left: 108px;
+				right: auto;
+				top: 30px;
+				position: relative;
+			}
+
+			#tfeature-testimonial_content {
+				font-size: 21px !important;
+			}
+		}
+
+		/* Google Map */
+        #map {
+            height: 50vh;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer-icons {
+        	background: var(--accent-color);
+        	border-radius: 50%;
+        	padding: 5px 15px;
+        	font-size: 30px;
+        	color: black;
+        	margin: 10px;
+        	transition: all 0.3s;
+        	-webkit-transition: all 0.3s;
+        	-moz-transition: all 0.3s;
+        	-ms-transition: all 0.3s;
+        }
+
+        .footer-icons:hover {
+        	color: white;
+        }
+
+        .footer-locations {
+        	font-family: 'Roboto', sans-serif;
+        	font-size: 16px;
+        	color: black;
+        	text-decoration: none;
+        	letter-spacing: 1px;
+        	transition: all 0.3s;
+        	-webkit-transition: all 0.3s;
+        	-moz-transition: all 0.3s;
+        	-ms-transition: all 0.3s;
+        }
+
+        .footer-locations:hover {
+        	color: var(--accent-color);
+        	text-decoration: underline;
+        	text-decoration-color: var(--accent-color);
+        }
+
+        .location-margins {
+/*        	display: block;*/
+        }
+
+        .footer-copyright {
+        	color: black;
+        	text-decoration: none;
+        	transition: all 0.3s;
+        	-webkit-transition: all 0.3s;
+        	-moz-transition: all 0.3s;
+        	-ms-transition: all 0.3s;
+        }
+
+        .footer-copyright:hover {
+        	color: var(--accent-color);
+        	text-decoration: underline;
+        	text-decoration-color: var(--accent-color);
+        }
+
+        @media only screen and (max-width: 1199px) {
+        	.fa-youtube {
+        		margin-top: 30px;
+        	}
+        }
+
+        @media only screen and (max-width: 991px) {
+        	.location-margins {
+        		margin-top: 50px;
+        	}
+        }
+
+        /* List of Menu */
+        .header-h {
+		    font-size: 35px;
+		    color: var(--accent-color);
+		    font-size: 46px;
+		    font-family: 'Oswald', sans-serif;
+		    font-weight: 300;
+		    text-decoration: underline;
+		    }
+		ul {
+		  list-style:none;
+		}
+		.header-p {
+		  color: var(--accent-color);
+		  font-size: 16px;
+		}
+		.section-padding{
+		    padding: 60px 0px;
+		}
+		.marb-35{
+		  margin-bottom: 35px;
+		}
+		.menu-restaurant
+		{
+		  width: 50%;
+		  float: left;
+		  padding: 15px;
+		  position: realtive;
+		  
+		}
+		.menu-restaurant .menu-title
+		{
+		  float: left;
+		  font-family: 'Dancing Script', cursive;
+/*		  text-transform: uppercase;*/
+		  letter-spacing: 2px;
+		  color: var(--second-color);
+		  font-size: 18px;
+		}
+		.menu-restaurant .menu-line
+		{
+		  position: absolute;
+		  bottom: 6px;
+		  border-bottom: 1px dotted rgba(0,0,0,.3);
+		/*  border-bottom: 1px dotted rgba(0,0,0,.3);*/
+		  margin-left: .6em;
+		  margin-right: .6em;
+
+		}
+		.menu-restaurant .menu-price{
+		  font-weight: 600;
+		  position: absolute;
+		  right: 0;
+		  top: 0;
+		  
+		}
+		.menu-restaurant .menu-subtitle
+		{
+		  display: block;
+		  float: left;
+		  color: #000;
+		  font-family: 'Roboto', sans-serif !important;
+		  font-size: 15px;
+		}
+		.menu-restaurant span.clearfix{
+		  position: relative;
+		  display: block;
+		}
+		.filter {
+		    margin: 15px 15px;
+		}
+		#menu-filters ul li a.active, #menu-filters ul li a:hover
+		{
+		  text-decoration: underline;
+		  text-decoration-color: var(--accent-color);
+		  color: var(--second-color);
+		}
+		#menu-filters ul li 
+		{
+		  display: inline-block;
+		  color: #fff;
+		  text-transform: capitalize;
+		  letter-spacing: 1px;
+		  margin-botttom:40px;
+		}
+		#menu-filters ul li a
+		{
+		  padding: 10px 20px;
+		  font-size: 18px;
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		  
+		}
+		@media (min-width: 20px) and (max-width: 450px) 
+		{
+		  .menu-restaurant 
+		  {
+		    width: 100%;
+		  }
+		  .header-h
+		  {
+		    font-size: 35px;
+		  }
+		  .header-p 
+		  {
+		    font-size: 14px;
+		  }
+		  
+		}
+
+		@media only screen and (max-width: 473px) {
+			a.menu-margins {
+				margin-top: 155px !important;
+			}
+		}
+
+		/* Menu Button */
+		.show-all-menus {
+			letter-spacing: 1px;
+			color: var(--second-color);
+			font-size: 24px;
+			padding: 10px 15px;
+			border: 3px solid var(--second-color);
+			text-decoration: none;
+			text-transform: uppercase;
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+		}
+
+		.show-all-menus:hover {
+			color: var(--accent-color);
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		/* Popup Image */
+		.popup-btn {
+			z-index: 9999999999 !important;
+		}
+
+		video {
+			width: 100%;
+			height: auto;
+			border: 4px solid var(--accent-color);
+		}
+
+
+  	</style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-offcanvas">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="font-size: 24px;">Design 11</a>
+        <ul class="navbar-nav navbar-top">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" style="color: black;">Home</a>
+                <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./menu.html" target="_blank" style="color: black;">Menu <i class="fa-solid fa-utensils"></i></a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+            <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" href="#!" id="dropdownExample" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownExample">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li> -->
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right navbar-icon" type="button" data-toggle="collapse" data-target="#navbar-mobile" aria-controls="navbar-mobile" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar bar1"></span>
+            <span class="icon-bar bar2"></span>
+            <span class="icon-bar bar3"></span>
+        </button>
+        <div class="navbar-collapse collapse ml-auto" id="navbar-mobile">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-image">
+                    <img src="https://img.freepik.com/premium-vector/restaurant-logo-design-template_79169-56.jpg?w=2000" alt="">
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="#" class="nav-link main-colors-touch">Home</a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="#about-us" class="nav-link main-colors-touch">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#our-menu" class="nav-link main-colors-touch">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact-us" class="nav-link main-colors-touch">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper mt-4">
+
+<header id="landing-page">
+    <div class="full-screen">
+	  <div>
+	    <h3>Landing Page</h3>
+	    <br>
+	    <br>
+	    <div class="button-line">
+	    	<a href="#">Reserve Now</a> 
+	    </div>
+	  </div>
+	</div>
+</header>
+
+<section id="about-us" class="container">
+	<div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Enjoy your Breakfast/Lunch/Dinner. <span class="main-colors">Here.</span></h2>
+        <br/>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non arcu magna. Nulla rhoncus convallis eros ac tincidunt. Vivamus rutrum ante tincidunt dui maximus, a hendrerit metus euismod.</p>
+      </div>
+      <div class="col-md-5">
+        <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+
+        <!-- <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="https://img.freepik.com/free-photo/delicious-cheeseburger_1232-503.jpg?w=2000"> -->
+
+        <video autoplay muted loop>
+			  <source src="./restaurant-2.mp4" type="video/mp4" style="background: no-repeat center center/cover;">
+			  Your browser does not support HTML5 video.
+		</video>
+
+      </div>
+    </div>
+</section>
+
+
+<section id="our-menu" style="margin-top: 200px;">
+	<div class="container">
+		 <center>
+		 	<h6 style="font-size: 44px;">Some Pictures of Our <span class="main-colors">Menu</span>.</h6>
+		 </center>
+		 <br/>
+         <div class="portfolio-menu mt-2 mb-4">
+            <ul>
+               <li class="gallery-selection-buttons active" data-filter="*" style="border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; margin: 10px 0px;">All</li>
+               <li class="gallery-selection-buttons" data-filter=".breakfast" style="border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; margin: 10px 10px;">Breakfast</li>
+               <li class="gallery-selection-buttons" data-filter=".lunch" style="border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; margin: 10px 10px;">Lunch</li>
+               <li class="gallery-selection-buttons text" data-filter=".dinner" style="border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; margin: 10px 10px;">Dinner</li>
+               <li class="gallery-selection-buttons text" data-filter=".smoothies" style="border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; margin: 10px 10px;">Smoothies</li>
+               <li class="gallery-selection-buttons text" data-filter=".drinks" style="border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; margin: 10px 10px;">Drinks</li>
+            </ul>
+         </div>
+         <div class="portfolio-item row">
+            <div class="item breakfast col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://thumbs.dreamstime.com/b/plate-english-breakfast-isolated-white-background-top-view-186028212.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="https://thumbs.dreamstime.com/b/plate-english-breakfast-isolated-white-background-top-view-186028212.jpg" alt="">
+               </a>
+            </div>
+            <div class="item breakfast col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://cdn.pixabay.com/photo/2021/05/14/23/35/breakfast-6254633_1280.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="https://cdn.pixabay.com/photo/2021/05/14/23/35/breakfast-6254633_1280.png" alt="">
+               </a>
+            </div>
+            <div class="item breakfast col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://t3.ftcdn.net/jpg/02/25/21/26/360_F_225212624_3YTrgtuzoDR61GcqDUrqLaLZEAtECFn6.jpg" class="fancylight popup-btn" data-fancybox-group="light">
+               <img class="img-fluid" src="https://t3.ftcdn.net/jpg/02/25/21/26/360_F_225212624_3YTrgtuzoDR61GcqDUrqLaLZEAtECFn6.jpg" alt="">
+               </a>
+            </div>
+            <div class="item lunch col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://www.vinnyssausage.com/assets/files/vinny/vs_main-sausages_2x.png" class="fancylight popup-btn" data-fancybox-group="light">
+               <img class="img-fluid" src="https://www.vinnyssausage.com/assets/files/vinny/vs_main-sausages_2x.png" alt="">
+               </a>
+            </div>
+            <div class="item dinner col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://media.istockphoto.com/id/1280703498/photo/instant-noodles-in-blue-bowl-with-fork-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=Gb4ZZdP4xUWPPXwJ0iGETGl958m8WiOYHp_s8fO19gk=" class="fancylight popup-btn" data-fancybox-group="light">
+               <img class="img-fluid" src="https://media.istockphoto.com/id/1280703498/photo/instant-noodles-in-blue-bowl-with-fork-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=Gb4ZZdP4xUWPPXwJ0iGETGl958m8WiOYHp_s8fO19gk=" alt="">
+               </a>
+            </div>
+            <div class="item smoothies col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://img.freepik.com/free-photo/fresh-orange-juice_144627-18386.jpg?w=2000" class="fancylight popup-btn" data-fancybox-group="light">
+               <img class="img-fluid" src="https://img.freepik.com/free-photo/fresh-orange-juice_144627-18386.jpg?w=2000" alt="">
+               </a>
+            </div>
+            <div class="item smoothies col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://media.istockphoto.com/id/513746304/photo/breakfast-smoothie-bowl.jpg?s=612x612&w=0&k=20&c=JDPFfPlpGUXnNOkGI8Neduy0JBIISYDAhI0VPGOoUYs=" class="fancylight popup-btn" data-fancybox-group="light">
+               <img class="img-fluid" src="https://media.istockphoto.com/id/513746304/photo/breakfast-smoothie-bowl.jpg?s=612x612&w=0&k=20&c=JDPFfPlpGUXnNOkGI8Neduy0JBIISYDAhI0VPGOoUYs=" alt="">
+               </a>
+            </div>
+            <div class="item drinks col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://www.freepnglogos.com/uploads/drinks-png/drinks-life-and-off-the-guest-list-vote-for-your-favorite-19.png" class="fancylight popup-btn" data-fancybox-group="light">
+               <img class="img-fluid" src="https://www.freepnglogos.com/uploads/drinks-png/drinks-life-and-off-the-guest-list-vote-for-your-favorite-19.png" alt="">
+               </a>
+            </div>
+            <div class="item drinks col-lg-3 col-md-4 col-6 col-sm">
+               <a href="https://img.freepik.com/premium-photo/isolated-drink-avocado-smoothie-half-fruit-isolated-white-with-clipping-path_124717-651.jpg?w=2000" class="fancylight popup-btn" data-fancybox-group="light">
+               <img class="img-fluid" src="https://img.freepik.com/premium-photo/isolated-drink-avocado-smoothie-half-fruit-isolated-white-with-clipping-path_124717-651.jpg?w=2000" alt="">
+               </a>
+            </div>
+            
+         </div>
+      </div>
+</section>
+
+<!-- Modal Start -->
+<div class="container" style="margin-top: 100px;">
+    <!-- Button trigger modal -->
+    <center>
+	    <a class="show-all-menus" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	      Explore Menu
+	    </a>
+    </center>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Design 11</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <section id="menu-list" class="section-padding">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12 text-center  marb-35">
+                      <h1 class="header-h">Our Menu</h1>
+                    </div>
+
+                    <div class="col-md-12 text-center" id="menu-filters">
+                      <ul>
+                        <li><a class="filter active" data-filter=".menu-restaurant">All</a></li>
+                         <li><a class="filter " data-filter=".breakfast">Breakfast</a></li>
+                         <li><a class="filter menu-margins" data-filter=".lunch">Lunch</a></li>
+                    
+                      </ul>
+                    </div>
+                    <div id="menu-wrapper">
+                      <div class="breakfast menu-restaurant">
+                        <span class="clearfix">
+                          <a class="menu-title" href="#" data-meal-img=".jpg">Food Item Name</a>
+                          <span style="left:166px;right:44px;" class="menu-line"></span>
+                          <span class="menu-price">$20.99</span>
+                        </span>
+                        <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                      </div>
+                       <div class="breakfast menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="https://img.freepik.com/free-photo/hawaiian-pizza_74190-2500.jpg?w=2000" data-meal-img="https://img.freepik.com/free-photo/hawaiian-pizza_74190-2500.jpg?w=2000">Burger</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="breakfast menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="breakfast menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+                          <div class="lunch menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="lunch menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="lunch menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="lunch menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="lunch menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+                       <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+
+                          <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+                          <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>
+                          <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>    <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>    <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>    <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>    <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>    <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>    <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>    <div class="dinner menu-restaurant">
+                            <span class="clearfix">
+                              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                              <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                              <span class="menu-price">$20.99</span>
+                            </span>
+                            <span class="menu-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                          </div>              
+                      </div>
+                    </div>
+                </div>
+            </section>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="show-all-menus" data-bs-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- end of modal -->
+
+
+
+<section style="margin-top: 100px;">
+	<div id="tfeature" class="container">
+	    <div class="columns">
+	        <div class="col-1"><button style="z-index: 7;" class="tfeature_btn" id="tfeature_prev"><span class="sr-only">Show Previous Testimonial</span>&lt;</button></div>
+	        <div class="col-9"><div id="tfeature-images" tabindex="-1"></div></div>
+	        <div class="col-1"><button class="tfeature_btn" id="tfeature_next"><span class="sr-only">Show Next Testimonial</span>&gt;</button></div>
+	    </div>    
+	    <div id="tfeature-testimonial" aria-live="assertive" tabindex="0">
+	        <div id="tfeature-testimonial_content">...</div>
+	        <div id="tfeature-testimonial_author">...</div>
+	    </div>
+	</div>
+</section>
+
+<section style="margin-top: 100px;">
+      <div id="map"></div>
+</section>
+
+<footer id="contact-us" style="margin-top: 100px; margin-bottom: 25px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<h6>Connect</h6>
+				<br/>
+				<a class="footer-icons" href="#"><i class="fa-brands fa-instagram"></i></a>
+				<a class="footer-icons" href="#" style="padding: 5px 19px;"><i class="fa-brands fa-facebook-f"></i></a>
+				<a class="footer-icons" href="#"><i class="fa-brands fa-tiktok"></i></a>
+				<a class="footer-icons" href="#" style="padding: 5px 11px;"><i class="fa-brands fa-youtube"></i></a>
+			</div>
+
+			<div class="location-margins col-lg-8">
+				<h6>Location</h6>
+				<br/>
+				<a class="footer-locations" href="#"><i class="fa-solid fa-map-pin"></i> Lorem ipsum dolor sit amet</a>
+				<br/>
+				<br/>
+				<a class="footer-locations" href="#"><i class="fa-solid fa-at"></i> demo@demo.com</a>
+				<br/>
+				<br/>
+				<a class="footer-locations" href="#"><i class="fa-solid fa-phone"></i> +62 361 111444</a>
+			</div>
+		</div>
+	</div>
+
+	<center style="margin-top: 35px;">
+		<h6 style="font-weight: lighter; letter-spacing: 2px;">&copy; 2022 by <a class="footer-copyright" href="#">Someone Famous</a></h6>
+	</center>	
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
+
+
+<script>
+    (function($) {
+
+      // Menu filter
+      $("#menu-filters li a").click(function() {
+        $("#menu-filters li a").removeClass('active');
+        $(this).addClass('active');
+
+        var selectedFilter = $(this).data("filter");
+        //  $("#menu-wrapper").fadeTo(100, 0);
+
+        $(".menu-restaurant").fadeOut();
+
+        setTimeout(function() {
+          $(selectedFilter).slideDown();
+          //$("#menu-wrapper").fadeTo(300, 1);
+        }, 300);
+      });
+
+    })(jQuery);
+</script>
+
+<script type="text/javascript">
+	function testimonialFeature(){
+        if(tx_activeIndex > tx_length){tx_activeIndex = 0;}
+        if(tx_activeIndex < 0){tx_activeIndex = tx_length;}
+        $('#tfeature-testimonial_content').html(testimonials[tx_activeIndex]["content"]);
+        $('#tfeature-testimonial_author').html(testimonials[tx_activeIndex]["author"]);
+        
+        //set images
+        $('.tfeature-images_item').removeClass('left').removeClass('center').removeClass('right');
+        $('.tfeature-images_item[data-id="'+tx_activeIndex+'"]').addClass('center');
+        $('.tfeature-images_item[data-id="'+tx_activeIndex+'"]').prev().addClass('left');
+        $('.tfeature-images_item[data-id="'+tx_activeIndex+'"]').next().addClass('right');
+        
+        //infinity look
+        if(tx_activeIndex == 0){ $('.tfeature-images_item:last-of-type').addClass('left'); }
+        if(tx_activeIndex == tx_length){ $('.tfeature-images_item:first-of-type').addClass('right'); }
+        
+    }
+    
+    var testimonials = [
+        {"author": "Han Solo", "content": "The Food was good. Recommended!. Thanks!.", "image": "https://images.unsplash.com/photo-1567336273898-ebbf9eb3c3bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=864&q=80"},
+        {"author": "Princess Leia", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ac lectus ac bibendum.", "image": "https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"},
+        {"author": "Rey", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ac lectus ac bibendum.", "image": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"},
+        {"author": "Finn", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ac lectus ac bibendum.", "image": "https://images.unsplash.com/photo-1534184241306-2d7eb0ddbbde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"},
+        {"author": "Poe", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ac lectus ac bibendum.", "image": "https://images.unsplash.com/photo-1519625594242-7db544018926?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"},
+    ];
+    
+    //set initial content
+    tx_activeIndex = 2;
+    tx_length = parseInt(testimonials.length)-1;
+    testimonialFeature();
+    
+    //make image elements
+    for(var i=0; i<testimonials.length; i++) {
+        switch(true){
+            case(i==1):
+                var placement = "left";
+                break;
+            case(i==2):
+                var placement = "center";
+                break; 
+            case(i==3):
+                var placement = "right";
+                break;    
+            default:
+                var placement = "";
+                break;
+        }
+        $('#tfeature-images').append('<div class="tfeature-images_item '+placement+'" data-id="'+i+'"><img src="'+testimonials[i]["image"]+'" alt=""></div>')
+    }    
+    
+    $('#tfeature_prev').on('click', function(e){
+        e.preventDefault();
+        tx_activeIndex = tx_activeIndex-1;
+        testimonialFeature();
+    });
+    
+    $('#tfeature_next').on('click', function(e){
+        e.preventDefault();
+        tx_activeIndex = tx_activeIndex+1;
+        testimonialFeature();
+    });
+</script>
+
+<script>
+	var prevScrollpos = window.pageYOffset;
+	window.onscroll = function() {
+	var currentScrollPos = window.pageYOffset;
+	  if (prevScrollpos > currentScrollPos) {
+	    document.querySelector("nav").style.top = "0";
+	  } else {
+	    document.querySelector("nav").style.top = "-100px";
+	  }
+	  prevScrollpos = currentScrollPos;
+	}
+</script>
+
+<script type="text/javascript">
+	$('.portfolio-menu ul li').click(function(){
+ 	$('.portfolio-menu ul li').removeClass('active');
+ 	$(this).addClass('active');
+ 	
+ 	var selector = $(this).attr('data-filter');
+ 	$('.portfolio-item').isotope({
+ 		filter:selector
+ 	});
+ 	return  false;
+	 });
+	 $(document).ready(function() {
+	 var popup_btn = $('.popup-btn');
+	 popup_btn.magnificPopup({
+	 type : 'image',
+	 gallery : {
+	 	enabled : true
+	 }
+	 });
+ 	});
+</script>
+
+<script type="text/javascript">
+
+var window_height;
+var window_width;
+var navbar_initialized = false;
+var nav_toggle;
+
+var offCanvas = {
+    sidenav: {
+        // Sidenav is not visible by default.
+        // Change to 1 if necessary
+        sidenav_visible: 0
+    },
+    initSideNav: function initSideNav() {
+        if (!navbar_initialized) {
+            var $nav = $('nav');
+
+            // Add the offcanvas class to the navbar if it's not initialized
+            $nav.addClass('navbar-offcanvas');
+
+            // Clone relevant navbars
+            var $navtop = $nav.find('.navbar-top').first().clone(true);
+            var $navbar = $nav.find('.navbar-collapse').first().clone(true);
+
+            // Let's start with some empty vars
+            var ul_content = '';
+            var top_content = '';
+
+            // Set min-height of the new sidebar to the screen height
+            $navbar.css('min-height', window.screen.height);
+
+            // Take the content of .navbar-top
+            $navtop.each(function() {
+                var navtop_content = $(this).html();
+                top_content = top_content + navtop_content;
+            });
+
+            // Take the content of .navbar-collapse
+            $navbar.children('ul').each(function() {
+                var nav_content = $(this).html();
+                ul_content = ul_content + nav_content;
+            });
+
+            // Wrap the new content inside an <ul>
+            ul_content = '<ul class="navbar-nav sidebar-nav">' + ul_content + '</ul>';
+
+            // Insert the html content into our cloned content
+            $navbar.html(ul_content);
+            $navtop.html(top_content);
+
+            // Append the navbar to body,
+            // and insert the content of the navicons navbar just below the logo/nav-image
+            $('body').append($navbar);
+            $('.nav-image').after($navtop);
+
+
+            // Set the toggle-variable to the Bootstrap navbar-toggler button
+            var $toggle = $('.navbar-toggler');
+
+            // Add/remove classes on toggle and set the visiblity of the sidenav,
+            // and append the overlay. Also if the user clicks the overlay,
+            // the sidebar will close
+            $toggle.on('click', function () {
+                if (offCanvas.sidenav.sidenav_visible == 1) {
+                    $('html').removeClass('nav-open');
+                    offCanvas.sidenav.sidenav_visible = 0;
+                    $('#overlay').remove();
+                    setTimeout(function() {
+                        $toggle.removeClass('toggled');
+                    }, 300);
+                } else {
+                    setTimeout(function() {
+                        $toggle.addClass('toggled');
+                    }, 300);
+
+                    // Add the overlay and make it close the sidenav on click
+                    var div = '<div id="overlay"></div>';
+                    $(div).appendTo("body").on('click', function() {
+                        $('html').removeClass('nav-open');
+                        offCanvas.sidenav.sidenav_visible = 0;
+                        $('#overlay').remove();
+                        setTimeout(function() {
+                            $toggle.removeClass('toggled');
+                        }, 300);
+                    });
+
+                    $('html').addClass('nav-open');
+                    offCanvas.sidenav.sidenav_visible = 1;
+                }
+            });
+            // Set navbar to initialized
+            navbar_initialized = true;
+        }
+    }
+};
+
+$(document).ready(function () {
+    window_width = $(window).width();
+
+    nav_toggle = $('nav').hasClass('navbar-offcanvas') ? true : false;
+
+    // Responsive checks
+    if (window_width < 992 || nav_toggle) {
+        offCanvas.initSideNav();
+    }
+
+    // Close the sidebar if the user clicks a link or a dropdown-item,
+    // and close the sidebar
+    $('.nav-link:not(.dropdown-toggle), .dropdown-item').on('click', function () {
+        var $toggle = $('.navbar-toggler');
+
+        $('html').removeClass('nav-open');
+        offCanvas.sidenav.sidenav_visible = 0;
+        setTimeout(function () {
+            $toggle.removeClass('toggled');
+        }, 300);
+    });
+});
+
+$(window).resize(function () {
+    window_width = $(window).width();
+    
+    // More responsive checks if the user resize the browser
+    if (window_width < 992) {
+        offCanvas.initSideNav();
+    }
+
+    if (window_width > 992 && !nav_toggle) {
+        $('nav').removeClass('navbar-offcanvas');
+        offCanvas.sidenav.sidenav_visible = 1;
+        navbar_initialized = false;
+    }
+});
+
+</script>
+
+<script type="text/javascript">
+ /**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ * -8.701341696951147, 115.17589904439208
+ * #ffc107
+ */
+function initMap() {
+  // Styles a map in night mode.
+    const myLatLng = { lat: -8.701341696951147, lng: 115.17589904439208 };
+
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: myLatLng,
+    zoom: 13,
+    styles: [
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#444444"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#f2f2f2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "saturation": -100
+                        },
+                        {
+                            "lightness": 45
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        },
+                        {
+                            "color": "#94d1ac"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#d3ecdd"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        },
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                }
+            ]
+  });
+
+    new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
+    icon: 'bda-logo.png'
+  });
+}
+
+window.initMap = initMap;
+
+</script>
+
+</body>
+</html>
